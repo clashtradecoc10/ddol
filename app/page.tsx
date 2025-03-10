@@ -7,7 +7,6 @@ import { LoadMore } from "@/components/load-more";
 import { auth, currentUser } from "@clerk/nextjs/server";
 import { useHasValidSubscription } from "@/lib/utils";
 import { hasValidSubscription } from "@/actions/has-premium-subscription";
-import { listS3FolderContents } from "@/actions/get-s3-folder-objects";
 
 export default async function Home() {
   const user = await currentUser();
