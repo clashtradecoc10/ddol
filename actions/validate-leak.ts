@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 
 export async function validateLeak(id: string, token: string) {
   try {
@@ -20,7 +20,7 @@ export async function validateLeak(id: string, token: string) {
     }
 
     if (leak?.redirect === token) {
-      return leak as Leaks;
+      return leak as CleanLeaks;
     } else {
       return null;
     }

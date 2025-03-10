@@ -9,6 +9,7 @@ import { getLeaksByMonth } from "@/actions/get-leaks-by-month";
 type Model = {
   id: string;
   name: string;
+  image: string;
   date: string;
   key: string;
 };
@@ -40,6 +41,7 @@ export function LoadMoreMonth({
     const formattedProducts: Model[] = newProducts.map((product) => ({
       id: product.id,
       name: product.name,
+      image: product.image,
       date: product.date,
       key: product.redirect,
     }));

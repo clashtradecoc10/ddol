@@ -1,15 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { Leaks } from "@prisma/client";
 import { useEffect, useState } from "react";
 import megaLinkChecker from "mega-link-checker";
 import Loading from "./Loading";
 import { cn } from "@/lib/utils";
 import config from "@/app.config";
+import { CleanLeaks } from "@prisma/client";
 
 interface UnlockedModelProps {
-  leak: Leaks;
+  leak: CleanLeaks;
   isPremium: boolean;
 }
 
@@ -77,7 +77,7 @@ const UnlockedModel = ({ leak, isPremium }: UnlockedModelProps) => {
           <div className="flex items-center justify-center">
             <div className="w-full md:h-[330px] relative">
               <img
-                src={`https://d20j5ua5yqolxe.cloudfront.net/${leak.id}.jpg`}
+                src={`https://dxy6x8yqcf5mp.cloudfront.net/OnlyfansmegaSFW/${leak.image}`}
                 className="w-full h-auto md:h-full object-cover object-center rounded-lg"
               />
             </div>

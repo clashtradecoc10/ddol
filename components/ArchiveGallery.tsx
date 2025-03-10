@@ -15,7 +15,7 @@ const ArchiveGallery = () => {
               {item.image_paths.slice(0, 12).map((photo) => (
                 <img
                   key={photo}
-                  src={`https://d20j5ua5yqolxe.cloudfront.net${photo}.jpg`}
+                  src={`https://dxy6x8yqcf5mp.cloudfront.net/OnlyfansmegaSFW/${photo}`}
                   className="w-full h-[100px] object-cover object-center"
                 />
               ))}

@@ -1,10 +1,10 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 
 interface LeakResult {
-  leak: Leaks | null;
+  leak: CleanLeaks | null;
   validToken: boolean;
   link: string;
 }

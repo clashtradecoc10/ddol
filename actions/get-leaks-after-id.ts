@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 
 export async function getLeaksAfterId(
   lastId: string,
@@ -35,12 +35,13 @@ export async function getLeaksAfterId(
       select: {
         id: true,
         name: true,
+        image: true,
         date: true,
         redirect: true,
       },
     });
 
-    return leaks as Leaks[];
+    return leaks as CleanLeaks[];
   } catch (error) {
     console.error(error);
     return [];

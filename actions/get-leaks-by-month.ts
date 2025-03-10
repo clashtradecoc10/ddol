@@ -29,6 +29,7 @@ export async function getLeaksByMonth(
       select: {
         id: true,
         name: true,
+        image: true,
         date: true,
       },
     });

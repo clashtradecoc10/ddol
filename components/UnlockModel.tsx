@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
 import { formatDate, timeAgo } from "@/lib/utils";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 import config from "@/app.config";
 import FreeUnlockButton from "./FreeUnlockButton";
 
@@ -9,7 +9,7 @@ interface UnlockModelProps {
   date: string;
   id: string;
   name: string;
-  leak: Leaks;
+  leak: CleanLeaks;
   isLimited: boolean;
 }
 
@@ -45,7 +45,7 @@ const UnlockModel = ({ date, id, name, leak, isLimited }: UnlockModelProps) => {
             <div className="flex items-center justify-center">
               <div className="w-full md:h-[330px] relative">
                 <img
-                  src={`https://d20j5ua5yqolxe.cloudfront.net/${id}.jpg`}
+                  src={`https://dxy6x8yqcf5mp.cloudfront.net/OnlyfansmegaSFW/${leak.image}`}
                   className="w-full h-auto md:h-full object-cover object-center rounded-lg"
                 />
               </div>

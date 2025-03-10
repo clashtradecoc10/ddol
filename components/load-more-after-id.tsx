@@ -3,13 +3,14 @@
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/components/ui/spinner";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 import ModelDrawer from "./ModelDrawer";
 import { getLeaksAfterId } from "@/actions/get-leaks-after-id";
 
 type Model = {
   id: string;
   name: string;
+  image: string;
   date: string;
   key: string;
 };
@@ -28,7 +29,7 @@ export function LoadMoreAfterId({
 
   const loadMoreModels = async () => {
     const nextPage = page + 1;
-    const newProducts: Leaks[] =
+    const newProducts: CleanLeaks[] =
       (await getLeaksAfterId(
         lastLeakId,
         nextPage,
@@ -37,6 +38,7 @@ export function LoadMoreAfterId({
     const formattedProducts: Model[] = newProducts.map((product) => ({
       id: product.id,
       name: product.name,
+      image: product.image,
       date: product.date.toISOString(),
       key: product.redirect,
     }));

@@ -17,6 +17,7 @@ import { hasValidSubscription } from "@/actions/has-premium-subscription";
 type Model = {
   id: string;
   name: string;
+  image: string;
   date: string;
   key: string;
 };
@@ -39,8 +40,6 @@ export async function generateMetadata(
   const decodedName = decodeURIComponent(name);
   const originalName = decodedName.replace(/-/g, " ");
 
-  const imageUrl = `https://d20j5ua5yqolxe.cloudfront.net/${id}.jpg`;
-
   return {
     title: `${originalName} Leaks | OnlyFans Content Leaked - DailyDoseOfLeak.com`,
     description: `Explore exclusive OnlyFans nudes leaks of ${originalName} on DailyDoseOfLeak.com. Discover premium content updated regularly.`,
@@ -60,7 +59,6 @@ export async function generateMetadata(
     openGraph: {
       title: `${originalName} Leaks | OnlyFans Content Leaked - DailyDoseOfLeak.com`,
       description: `Explore exclusive OnlyFans nudes leaks of ${originalName} on DailyDoseOfLeak.com. Discover premium content updated regularly.`,
-      images: [imageUrl],
       url: new URL(`https://www.${config.domain}/${date}/${id}/${name}`),
       type: "website",
     },
@@ -90,6 +88,7 @@ export default async function Page({
   const models: Model[] = modelsAfterId.map((product) => ({
     id: product.id,
     name: product.name,
+    image: product.image,
     date: product.date.toISOString(),
     key: product.redirect,
   }));
