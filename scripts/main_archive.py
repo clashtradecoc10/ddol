@@ -7,8 +7,9 @@ import urllib.parse
 from collections import defaultdict
 
 
+DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
 # Connect to the PostgreSQL database
-conn = psycopg2.connect("postgresql://freearchive_owner:Wm2U9vgeXich@ep-solitary-math-a4j0mp8t-pooler.us-east-1.aws.neon.tech/DailyDoseOfLeaks?sslmode=require")
+conn = psycopg2.connect(DB_CONNECTION_STRING)
 cur = conn.cursor()
 
 # Query to select data from the Leaks table, ordered by date
@@ -63,6 +64,7 @@ for row in rows:
         main_list.append({
             "id": id,
             "name": name,
+            "image": image,
             "date": date.isoformat(),
             "key": redirect
         })
