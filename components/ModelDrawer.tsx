@@ -7,6 +7,7 @@ interface ModelDrawerProps {
   models: {
     id: string;
     name: string;
+    image: string;
     date: string;
     key: string;
   }[];
@@ -49,7 +50,7 @@ const ModelDrawer = ({ models, isPremium }: ModelDrawerProps) => {
                 className="block"
               >
                 <img
-                  src={`https://d20j5ua5yqolxe.cloudfront.net/${item.id}.jpg`}
+                  src={`https://dxy6x8yqcf5mp.cloudfront.net/OnlyfansmegaSFW/${item.image}`}
                   className="w-full h-[250px] object-cover object-center rounded-lg"
                 />
               </Link>

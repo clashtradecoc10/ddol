@@ -10,6 +10,7 @@ export async function getLeakById(id: string) {
       },
       select: {
         name: true,
+        image: true,
         date: true,
       },
     });

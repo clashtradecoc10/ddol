@@ -1,7 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
-import { Leaks } from "@prisma/client";
+import { CleanLeaks } from "@prisma/client";
 
 export async function getLeak(page: number, limit: number) {
   const offset = (page - 1) * limit;
@@ -16,6 +16,7 @@ export async function getLeak(page: number, limit: number) {
       select: {
         id: true,
         name: true,
+        image: true,
         date: true,
         redirect: true,
       },
@@ -23,7 +24,7 @@ export async function getLeak(page: number, limit: number) {
 
     console.log("wjqf");
 
-    return leaks as Leaks[];
+    return leaks as CleanLeaks[];
   } catch (error) {
     console.error(error);
     return [];

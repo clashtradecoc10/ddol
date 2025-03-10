@@ -7,7 +7,6 @@ import urllib.parse
 from collections import defaultdict
 import os
 
-
 DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
 # Connect to the PostgreSQL database
 conn = psycopg2.connect(DB_CONNECTION_STRING)
@@ -46,6 +45,9 @@ main_list = []
 archive_list = []
 archive_dict = defaultdict(lambda: defaultdict(list))
 
+# Dictionary to store image paths by year and month
+image_dict = defaultdict(lambda: defaultdict(list))
+
 # XML sitemap generation
 sitemap_index = Element('sitemapindex', xmlns="http://www.sitemaps.org/schemas/sitemap/0.9")
 count = 0
@@ -58,7 +60,11 @@ for row in rows:
     month_numeric = f"{date.month:02d}"
     month_textual = get_month_name(date.month)
 
+    # Store IDs for archive structure
     archive_dict[year][month_numeric].append(f"/{id}")
+    
+    # Store image paths for the same year/month structure
+    image_dict[year][month_numeric].append(image)
     
     # Check criteria for main.json
     if len(main_list) < 48:
@@ -92,12 +98,15 @@ archive = []
 for year, months in archive_dict.items():
     for month_numeric, ids in months.items():
         month_textual = get_month_name(int(month_numeric))
+        # Get the corresponding image paths for this year/month
+        image_paths = image_dict[year][month_numeric]
+        
         archive.append({
             'year': year,
             'month_numeric': month_numeric,
             'month_textual': month_textual,
             'count': len(ids),
-            'image_paths': ids
+            'image_paths': image_paths  # Using image paths instead of IDs
         })
 
 # Final sitemap and index file handling

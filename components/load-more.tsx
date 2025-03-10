@@ -4,12 +4,13 @@ import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 import { Spinner } from "@/components/ui/spinner";
 import { getLeak } from "@/actions/get-leaks";
-import { Leaks } from "@prisma/client";
 import ModelDrawer from "./ModelDrawer";
+import { CleanLeaks } from "@prisma/client";
 
 type Model = {
   id: string;
   name: string;
+  image: string;
   date: string;
   key: string;
 };
@@ -22,12 +23,13 @@ export function LoadMore({ isPremium }: { isPremium: boolean }) {
 
   const loadMoreModels = async () => {
     const nextPage = page + 1;
-    const newProducts: Leaks[] =
+    const newProducts: CleanLeaks[] =
       (await getLeak(nextPage, Number(process.env.NEXT_PUBLIC_LOAD_AMOUNT!))) ??
       [];
     const formattedProducts: Model[] = newProducts.map((product) => ({
       id: product.id,
       name: product.name,
+      image: product.image,
       date: product.date.toISOString(),
       key: product.redirect,
     }));
