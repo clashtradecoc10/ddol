@@ -5,6 +5,7 @@ from xml.etree.ElementTree import Element, SubElement, tostring
 from xml.dom import minidom
 import urllib.parse
 from collections import defaultdict
+import os
 
 
 DB_CONNECTION_STRING = os.environ.get("DB_CONNECTION_STRING")
