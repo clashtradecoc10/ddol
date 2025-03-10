@@ -8,7 +8,7 @@ from collections import defaultdict
 
 
 # Connect to the PostgreSQL database
-conn = psycopg2.connect("postgresql://peter.arnold88:qiB0U6NAYMpS@ep-raspy-cherry-a41cloo2.us-east-1.aws.neon.tech/DailyDoseOfLeak?sslmode=require")
+conn = psycopg2.connect("postgresql://freearchive_owner:Wm2U9vgeXich@ep-solitary-math-a4j0mp8t-pooler.us-east-1.aws.neon.tech/DailyDoseOfLeaks?sslmode=require")
 cur = conn.cursor()
 
 # Query to select data from the Leaks table, ordered by date
